@@ -430,6 +430,7 @@ impl GizmoCommand {
     }
 }
 
+/// Gizmo log version of [`arc_2d`](https://docs.rs/bevy/0.14.1/bevy/gizmos/gizmos/struct.Gizmos.html#method.arc_2d).
 pub fn arc_2d(
     position: Vec2,
     direction_angle: f32,
@@ -447,6 +448,7 @@ pub fn arc_2d(
     .unwrap()
 }
 
+/// Gizmo log version of [`arc_3d`](https://docs.rs/bevy/0.14.1/bevy/gizmos/gizmos/struct.Gizmos.html#method.arc_3d).
 pub fn arc_3d(
     angle: f32,
     radius: f32,
@@ -464,6 +466,7 @@ pub fn arc_3d(
     .unwrap()
 }
 
+/// Gizmo log version of [`arrow`](https://docs.rs/bevy/0.14.1/bevy/gizmos/gizmos/struct.Gizmos.html#method.arrow).
 pub fn arrow(start: Vec3, end: Vec3, color: impl Into<Color>) -> String {
     ron::ser::to_string(&GizmoCommand::Arrow {
         start,
@@ -473,6 +476,7 @@ pub fn arrow(start: Vec3, end: Vec3, color: impl Into<Color>) -> String {
     .unwrap()
 }
 
+/// Gizmo log version of [`arrow_2d`](https://docs.rs/bevy/0.14.1/bevy/gizmos/gizmos/struct.Gizmos.html#method.arrow_2d).
 pub fn arrow_2d(start: Vec2, end: Vec2, color: impl Into<Color>) -> String {
     ron::ser::to_string(&GizmoCommand::Arrow2d {
         start,
@@ -482,6 +486,7 @@ pub fn arrow_2d(start: Vec2, end: Vec2, color: impl Into<Color>) -> String {
     .unwrap()
 }
 
+/// Gizmo log version of [`axes`](https://docs.rs/bevy/0.14.1/bevy/gizmos/gizmos/struct.Gizmos.html#method.axes).
 pub fn axes(transform: impl IntoMat4, base_length: f32) -> String {
     ron::ser::to_string(&GizmoCommand::Axes {
         transform: transform.into_mat4(),
@@ -490,6 +495,7 @@ pub fn axes(transform: impl IntoMat4, base_length: f32) -> String {
     .unwrap()
 }
 
+/// Gizmo log version of [`axes_2d`](https://docs.rs/bevy/0.14.1/bevy/gizmos/gizmos/struct.Gizmos.html#method.axes_2d).
 pub fn axes_2d(transform: impl IntoMat4, base_length: f32) -> String {
     ron::ser::to_string(&GizmoCommand::Axes2d {
         transform: transform.into_mat4(),
@@ -498,6 +504,7 @@ pub fn axes_2d(transform: impl IntoMat4, base_length: f32) -> String {
     .unwrap()
 }
 
+/// Gizmo log version of [`circle`](https://docs.rs/bevy/0.14.1/bevy/gizmos/gizmos/struct.Gizmos.html#method.circle).
 pub fn circle(position: Vec3, normal: Dir3, radius: f32, color: impl Into<Color>) -> String {
     ron::ser::to_string(&GizmoCommand::Circle {
         position,
@@ -508,6 +515,7 @@ pub fn circle(position: Vec3, normal: Dir3, radius: f32, color: impl Into<Color>
     .unwrap()
 }
 
+/// Gizmo log version of [`circle_2d`](https://docs.rs/bevy/0.14.1/bevy/gizmos/gizmos/struct.Gizmos.html#method.circle_2d).
 pub fn circle_2d(position: Vec2, radius: f32, color: impl Into<Color>) -> String {
     ron::ser::to_string(&GizmoCommand::Circle2d {
         position,
@@ -517,6 +525,7 @@ pub fn circle_2d(position: Vec2, radius: f32, color: impl Into<Color>) -> String
     .unwrap()
 }
 
+/// Gizmo log version of [`cuboid`](https://docs.rs/bevy/0.14.1/bevy/gizmos/gizmos/struct.Gizmos.html#method.cuboid).
 pub fn cuboid(transform: impl IntoMat4, color: impl Into<Color>) -> String {
     ron::ser::to_string(&GizmoCommand::Cuboid {
         transform: transform.into_mat4(),
@@ -525,6 +534,7 @@ pub fn cuboid(transform: impl IntoMat4, color: impl Into<Color>) -> String {
     .unwrap()
 }
 
+/// Gizmo log version of [`ellipse`](https://docs.rs/bevy/0.14.1/bevy/gizmos/gizmos/struct.Gizmos.html#method.ellipse).
 pub fn ellipse(position: Vec3, rotation: Quat, half_size: Vec2, color: impl Into<Color>) -> String {
     ron::ser::to_string(&GizmoCommand::Ellipse {
         position,
@@ -535,6 +545,7 @@ pub fn ellipse(position: Vec3, rotation: Quat, half_size: Vec2, color: impl Into
     .unwrap()
 }
 
+/// Gizmo log version of [`ellipse_2d`](https://docs.rs/bevy/0.14.1/bevy/gizmos/gizmos/struct.Gizmos.html#method.ellipse_2d).
 pub fn ellipse_2d(position: Vec2, angle: f32, half_size: Vec2, color: impl Into<Color>) -> String {
     ron::ser::to_string(&GizmoCommand::Ellipse2d {
         position,
@@ -545,6 +556,7 @@ pub fn ellipse_2d(position: Vec2, angle: f32, half_size: Vec2, color: impl Into<
     .unwrap()
 }
 
+/// Gizmo log version of [`grid`](https://docs.rs/bevy/0.14.1/bevy/gizmos/gizmos/struct.Gizmos.html#method.grid).
 pub fn grid(
     position: Vec3,
     rotation: Quat,
@@ -562,6 +574,7 @@ pub fn grid(
     .unwrap()
 }
 
+/// Gizmo log version of [`grid_2d`](https://docs.rs/bevy/0.14.1/bevy/gizmos/gizmos/struct.Gizmos.html#method.grid_2d).
 pub fn grid_2d(
     position: Vec2,
     rotation: f32,
@@ -579,6 +592,7 @@ pub fn grid_2d(
     .unwrap()
 }
 
+/// Gizmo log version of [`grid_3d`](https://docs.rs/bevy/0.14.1/bevy/gizmos/gizmos/struct.Gizmos.html#method.grid_3d).
 pub fn grid_3d(
     position: Vec3,
     rotation: Quat,
@@ -596,6 +610,7 @@ pub fn grid_3d(
     .unwrap()
 }
 
+/// Gizmo log version of [`line`](https://docs.rs/bevy/0.14.1/bevy/gizmos/gizmos/struct.Gizmos.html#method.line).
 pub fn line(start: Vec3, end: Vec3, color: impl Into<Color>) -> String {
     ron::ser::to_string(&GizmoCommand::Line {
         start,
@@ -605,6 +620,7 @@ pub fn line(start: Vec3, end: Vec3, color: impl Into<Color>) -> String {
     .unwrap()
 }
 
+/// Gizmo log version of [`line_2d`](https://docs.rs/bevy/0.14.1/bevy/gizmos/gizmos/struct.Gizmos.html#method.line_2d).
 pub fn line_2d(start: Vec2, end: Vec2, color: impl Into<Color>) -> String {
     ron::ser::to_string(&GizmoCommand::Line2d {
         start,
@@ -614,6 +630,7 @@ pub fn line_2d(start: Vec2, end: Vec2, color: impl Into<Color>) -> String {
     .unwrap()
 }
 
+/// Gizmo log version of [`line_gradient`](https://docs.rs/bevy/0.14.1/bevy/gizmos/gizmos/struct.Gizmos.html#method.line_gradient).
 pub fn line_gradient(
     start: Vec3,
     end: Vec3,
@@ -629,6 +646,7 @@ pub fn line_gradient(
     .unwrap()
 }
 
+/// Gizmo log version of [`line_gradient_2d`](https://docs.rs/bevy/0.14.1/bevy/gizmos/gizmos/struct.Gizmos.html#method.line_gradient_2d).
 pub fn line_gradient_2d(
     start: Vec2,
     end: Vec2,
@@ -644,6 +662,7 @@ pub fn line_gradient_2d(
     .unwrap()
 }
 
+/// Gizmo log version of [`linestrip`](https://docs.rs/bevy/0.14.1/bevy/gizmos/gizmos/struct.Gizmos.html#method.linestrip).
 pub fn linestrip(positions: impl IntoIterator<Item = Vec3>, color: impl Into<Color>) -> String {
     ron::ser::to_string(&GizmoCommand::Linestrip {
         positions: positions.into_iter().collect(),
@@ -652,6 +671,7 @@ pub fn linestrip(positions: impl IntoIterator<Item = Vec3>, color: impl Into<Col
     .unwrap()
 }
 
+/// Gizmo log version of [`linestrip_2d`](https://docs.rs/bevy/0.14.1/bevy/gizmos/gizmos/struct.Gizmos.html#method.linestrip_2d).
 pub fn linestrip_2d(positions: impl IntoIterator<Item = Vec2>, color: impl Into<Color>) -> String {
     ron::ser::to_string(&GizmoCommand::Linestrip2d {
         positions: positions.into_iter().collect(),
@@ -660,6 +680,7 @@ pub fn linestrip_2d(positions: impl IntoIterator<Item = Vec2>, color: impl Into<
     .unwrap()
 }
 
+/// Gizmo log version of [`linestrip_gradient`](https://docs.rs/bevy/0.14.1/bevy/gizmos/gizmos/struct.Gizmos.html#method.linestrip_gradient).
 pub fn linestrip_gradient<C: Into<Color>>(points: impl IntoIterator<Item = (Vec3, C)>) -> String {
     ron::ser::to_string(&GizmoCommand::LinestripGradient {
         points: points.into_iter().map(|(v, c)| (v, c.into())).collect(),
@@ -667,6 +688,7 @@ pub fn linestrip_gradient<C: Into<Color>>(points: impl IntoIterator<Item = (Vec3
     .unwrap()
 }
 
+/// Gizmo log version of [`linestrip_gradient_2d`](https://docs.rs/bevy/0.14.1/bevy/gizmos/gizmos/struct.Gizmos.html#method.linestrip_gradient_2d).
 pub fn linestrip_gradient_2d<C: Into<Color>>(
     positions: impl IntoIterator<Item = (Vec2, C)>,
 ) -> String {
@@ -676,6 +698,7 @@ pub fn linestrip_gradient_2d<C: Into<Color>>(
     .unwrap()
 }
 
+/// Gizmo log version of [`long_arc_3d_between`](https://docs.rs/bevy/0.14.1/bevy/gizmos/gizmos/struct.Gizmos.html#method.long_arc_3d_between).
 pub fn long_arc_3d_between(center: Vec3, from: Vec3, to: Vec3, color: impl Into<Color>) -> String {
     ron::ser::to_string(&GizmoCommand::LongArc3dBetween {
         center,
@@ -686,6 +709,7 @@ pub fn long_arc_3d_between(center: Vec3, from: Vec3, to: Vec3, color: impl Into<
     .unwrap()
 }
 
+/// Gizmo log version of [`ray`](https://docs.rs/bevy/0.14.1/bevy/gizmos/gizmos/struct.Gizmos.html#method.ray).
 pub fn ray(start: Vec3, vector: Vec3, color: impl Into<Color>) -> String {
     ron::ser::to_string(&GizmoCommand::Ray {
         start,
@@ -695,6 +719,7 @@ pub fn ray(start: Vec3, vector: Vec3, color: impl Into<Color>) -> String {
     .unwrap()
 }
 
+/// Gizmo log version of [`ray_2d`](https://docs.rs/bevy/0.14.1/bevy/gizmos/gizmos/struct.Gizmos.html#method.ray_2d).
 pub fn ray_2d(start: Vec2, vector: Vec2, color: impl Into<Color>) -> String {
     ron::ser::to_string(&GizmoCommand::Ray2d {
         start,
@@ -704,6 +729,7 @@ pub fn ray_2d(start: Vec2, vector: Vec2, color: impl Into<Color>) -> String {
     .unwrap()
 }
 
+/// Gizmo log version of [`ray_gradient`](https://docs.rs/bevy/0.14.1/bevy/gizmos/gizmos/struct.Gizmos.html#method.ray_gradient).
 pub fn ray_gradient(
     start: Vec3,
     vector: Vec3,
@@ -719,6 +745,7 @@ pub fn ray_gradient(
     .unwrap()
 }
 
+/// Gizmo log version of [`ray_gradient_2d`](https://docs.rs/bevy/0.14.1/bevy/gizmos/gizmos/struct.Gizmos.html#method.ray_gradient_2d).
 pub fn ray_gradient_2d(
     start: Vec2,
     vector: Vec2,
@@ -734,6 +761,7 @@ pub fn ray_gradient_2d(
     .unwrap()
 }
 
+/// Gizmo log version of [`rect`](https://docs.rs/bevy/0.14.1/bevy/gizmos/gizmos/struct.Gizmos.html#method.rect).
 pub fn rect(position: Vec3, rotation: Quat, size: Vec2, color: impl Into<Color>) -> String {
     ron::ser::to_string(&GizmoCommand::Rect {
         position,
@@ -744,6 +772,7 @@ pub fn rect(position: Vec3, rotation: Quat, size: Vec2, color: impl Into<Color>)
     .unwrap()
 }
 
+/// Gizmo log version of [`rect_2d`](https://docs.rs/bevy/0.14.1/bevy/gizmos/gizmos/struct.Gizmos.html#method.rect_2d).
 pub fn rect_2d(position: Vec2, rotation: f32, size: Vec2, color: impl Into<Color>) -> String {
     ron::ser::to_string(&GizmoCommand::Rect2d {
         position,
@@ -754,6 +783,7 @@ pub fn rect_2d(position: Vec2, rotation: f32, size: Vec2, color: impl Into<Color
     .unwrap()
 }
 
+/// Gizmo log version of [`rounded_cuboid`](https://docs.rs/bevy/0.14.1/bevy/gizmos/gizmos/struct.Gizmos.html#method.rounded_cuboid).
 pub fn rounded_cuboid(
     position: Vec3,
     rotation: Quat,
@@ -769,6 +799,7 @@ pub fn rounded_cuboid(
     .unwrap()
 }
 
+/// Gizmo log version of [`rounded_rect`](https://docs.rs/bevy/0.14.1/bevy/gizmos/gizmos/struct.Gizmos.html#method.rounded_rect).
 pub fn rounded_rect(position: Vec3, rotation: Quat, size: Vec2, color: impl Into<Color>) -> String {
     ron::ser::to_string(&GizmoCommand::RoundedRect {
         position,
@@ -779,6 +810,7 @@ pub fn rounded_rect(position: Vec3, rotation: Quat, size: Vec2, color: impl Into
     .unwrap()
 }
 
+/// Gizmo log version of [`rounded_rect_2d`](https://docs.rs/bevy/0.14.1/bevy/gizmos/gizmos/struct.Gizmos.html#method.rounded_rect_2d).
 pub fn rounded_rect_2d(
     position: Vec2,
     rotation: f32,
@@ -794,6 +826,7 @@ pub fn rounded_rect_2d(
     .unwrap()
 }
 
+/// Gizmo log version of [`short_arc_3d_between`](https://docs.rs/bevy/0.14.1/bevy/gizmos/gizmos/struct.Gizmos.html#method.short_arc_3d_between).
 pub fn short_arc_3d_between(center: Vec3, from: Vec3, to: Vec3, color: impl Into<Color>) -> String {
     ron::ser::to_string(&GizmoCommand::ShortArc3dBetween {
         center,
@@ -804,6 +837,7 @@ pub fn short_arc_3d_between(center: Vec3, from: Vec3, to: Vec3, color: impl Into
     .unwrap()
 }
 
+/// Gizmo log version of [`sphere`](https://docs.rs/bevy/0.14.1/bevy/gizmos/gizmos/struct.Gizmos.html#method.sphere).
 pub fn sphere(position: Vec3, rotation: Quat, radius: f32, color: impl Into<Color>) -> String {
     ron::ser::to_string(&GizmoCommand::Sphere {
         position,
