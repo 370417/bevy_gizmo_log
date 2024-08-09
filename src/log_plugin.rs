@@ -1,10 +1,8 @@
 use bevy_app::{App, Plugin};
-use bevy_log::{
-    tracing_subscriber::{filter::FilterFn, fmt, layer::SubscriberExt, EnvFilter, Layer, Registry},
-    BoxedLayer, Level,
-};
-use bevy_utils::tracing::{self, Subscriber};
+use bevy_log::{BoxedLayer, Level};
+use tracing::{self, Subscriber};
 use tracing_log::LogTracer;
+use tracing_subscriber::{filter::FilterFn, fmt, layer::SubscriberExt, EnvFilter, Layer, Registry};
 
 use crate::log_layer::GizmoLayer;
 
@@ -83,8 +81,7 @@ impl GizmoLogPlugin {
 
     fn set_global_subscriber<S: Subscriber + Send + Sync + 'static>(subscriber: S) {
         let logger_already_set = LogTracer::init().is_err();
-        let subscriber_already_set =
-            bevy_utils::tracing::subscriber::set_global_default(subscriber).is_err();
+        let subscriber_already_set = tracing::subscriber::set_global_default(subscriber).is_err();
 
         match (logger_already_set, subscriber_already_set) {
             (true, true) => tracing::error!(

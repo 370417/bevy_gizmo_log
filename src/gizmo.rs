@@ -1,8 +1,9 @@
 //! Functions for logging gizmos.
 
 use bevy_color::Color;
+#[cfg(feature = "bevy")]
 use bevy_gizmos::gizmos::Gizmos;
-use bevy_math::{Dir3, Mat4, Quat, Rot2, UVec2, UVec3, Vec2, Vec3};
+use bevy_math::{Dir3, Mat4, Quat, UVec2, UVec3, Vec2, Vec3};
 
 use crate::transform::IntoMat4;
 
@@ -160,7 +161,7 @@ pub(crate) enum GizmoCommand {
     },
     Rect2d {
         position: Vec2,
-        rotation: Rot2,
+        rotation: f32,
         size: Vec2,
         color: Color,
     },
@@ -196,6 +197,7 @@ pub(crate) enum GizmoCommand {
     },
 }
 
+#[cfg(feature = "bevy")]
 impl GizmoCommand {
     pub fn draw(self, gizmos: &mut Gizmos) {
         match self {
@@ -742,15 +744,10 @@ pub fn rect(position: Vec3, rotation: Quat, size: Vec2, color: impl Into<Color>)
     .unwrap()
 }
 
-pub fn rect_2d(
-    position: Vec2,
-    rotation: impl Into<Rot2>,
-    size: Vec2,
-    color: impl Into<Color>,
-) -> String {
+pub fn rect_2d(position: Vec2, rotation: f32, size: Vec2, color: impl Into<Color>) -> String {
     ron::ser::to_string(&GizmoCommand::Rect2d {
         position,
-        rotation: rotation.into(),
+        rotation,
         size,
         color: color.into(),
     })

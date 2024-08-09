@@ -21,7 +21,6 @@
 //!
 //! 1. Make adding gizmos as quick and easy as possible.
 //! 2. Add gizmos anywhere, even in code not managed by bevy.
-//! 3. Use gizmos without adding bevy as a dependency.
 //!
 //! ## Getting started
 //!
@@ -54,10 +53,18 @@
 //! ```
 
 pub mod gizmo;
-pub mod gizmo_na;
-mod log_layer;
-mod log_plugin;
-mod transform;
 
+#[cfg(feature = "convert-nalgebra033")]
+pub mod gizmo_na;
+
+#[cfg(feature = "bevy")]
+mod log_layer;
+#[cfg(feature = "bevy")]
+mod log_plugin;
+
+#[cfg(feature = "bevy")]
 pub use log_layer::GizmoLayer;
+#[cfg(feature = "bevy")]
 pub use log_plugin::GizmoLogPlugin;
+
+mod transform;

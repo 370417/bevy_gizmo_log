@@ -5,11 +5,11 @@ use std::sync::mpsc;
 use bevy_app::{App, Update};
 use bevy_ecs::system::NonSend;
 use bevy_gizmos::gizmos::Gizmos;
-use bevy_log::tracing_subscriber::{layer::Context, Layer};
-use bevy_utils::tracing::{
+use tracing::{
     field::{Field, Visit},
     Event, Subscriber,
 };
+use tracing_subscriber::{layer::Context, Layer};
 
 use crate::gizmo::GizmoCommand;
 

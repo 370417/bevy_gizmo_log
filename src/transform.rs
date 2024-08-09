@@ -1,4 +1,5 @@
 use bevy_math::{Affine3A, Mat4};
+#[cfg(feature = "bevy")]
 use bevy_transform::components::{GlobalTransform, Transform};
 
 /// Some gizmos in bevy take an `impl TransformPoint` argument
@@ -21,12 +22,14 @@ impl IntoMat4 for Affine3A {
     }
 }
 
+#[cfg(feature = "bevy")]
 impl IntoMat4 for GlobalTransform {
     fn into_mat4(&self) -> Mat4 {
         self.compute_matrix()
     }
 }
 
+#[cfg(feature = "bevy")]
 impl IntoMat4 for Transform {
     fn into_mat4(&self) -> Mat4 {
         self.compute_matrix()
