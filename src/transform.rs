@@ -11,31 +11,31 @@ use bevy_transform::components::{GlobalTransform, Transform};
 ///
 /// [`impl TransformPoint`]: bevy::prelude::TransformPoint
 pub trait IntoMat4 {
-    fn into_mat4(&self) -> Mat4;
+    fn into_mat4(self) -> Mat4;
 }
 
 impl IntoMat4 for Mat4 {
-    fn into_mat4(&self) -> Mat4 {
-        *self
+    fn into_mat4(self) -> Mat4 {
+        self
     }
 }
 
 impl IntoMat4 for Affine3A {
-    fn into_mat4(&self) -> Mat4 {
-        Mat4::from(*self)
+    fn into_mat4(self) -> Mat4 {
+        Mat4::from(self)
     }
 }
 
 #[cfg(feature = "bevy")]
 impl IntoMat4 for GlobalTransform {
-    fn into_mat4(&self) -> Mat4 {
+    fn into_mat4(self) -> Mat4 {
         self.compute_matrix()
     }
 }
 
 #[cfg(feature = "bevy")]
 impl IntoMat4 for Transform {
-    fn into_mat4(&self) -> Mat4 {
+    fn into_mat4(self) -> Mat4 {
         self.compute_matrix()
     }
 }
