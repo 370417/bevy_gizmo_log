@@ -1,7 +1,12 @@
 [package]
 name = "bevy_gizmo_log"
 version = "0.1.0"
+keywords = ["bevy", "logging"]
+description = "Render bevy gizmos by logging them"
+categories = ["game-development", "development-tools::debugging"]
 edition = "2021"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/370417/bevy_gizmo_log"
 
 [features]
 default = ["bevy"]
