@@ -1,5 +1,9 @@
 # bevy_gizmo_log
 
+[![Crates.io badge](https://img.shields.io/crates/v/bevy_gizmo_log)](https://crates.io/crates/bevy_gizmo_log)
+[![Docs.rs badge](https://docs.rs/bevy_gizmo_log/badge.svg)](https://docs.rs/bevy_gizmo_log/latest/bevy_gizmo_log/)
+[![Build badge](https://github.com/370417/bevy_gizmo_log/workflows/build/badge.svg)](https://github.com/370417/bevy_gizmo_log/actions)
+
 Bevy_gizmo_log gives you the ability to render gizmos by
 logging them. This lets you render gizmos anytime, anywhere.
 
