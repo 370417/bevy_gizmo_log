@@ -1,5 +1,3 @@
-//! Reads gizmo log events from tracing logs and sends them to a bevy resource.
-
 use std::sync::mpsc;
 
 use bevy_app::{App, Update};
@@ -13,12 +11,15 @@ use tracing_subscriber::{layer::Context, Layer};
 
 use crate::gizmo::GizmoCommand;
 
-/// A tracing_subscriber::Layer that handles gizmo logs.
+/// A `tracing_subscriber::Layer` that handles gizmo logs.
+///
+/// For use when you don't want to use `GizmoLogPlugin`.
 pub struct GizmoLayer {
     sender: mpsc::Sender<GizmoCommand>,
 }
 
 impl GizmoLayer {
+    /// Create a new `GizmoLayer` and setup `app` to render gizmos from logs.
     pub fn new(app: &mut App) -> Self {
         let (sender, receiver) = std::sync::mpsc::channel();
         app.insert_non_send_resource(GizmoLogEventReceiver(receiver));
@@ -62,7 +63,13 @@ fn extract_gizmo_command(event: &Event<'_>) -> Option<GizmoCommand> {
 /// Bevy non-send resource that receives gizmo log events.
 struct GizmoLogEventReceiver(pub mpsc::Receiver<GizmoCommand>);
 
-fn render_gizmo_log_events(receiver: NonSend<GizmoLogEventReceiver>, mut gizmos: Gizmos) {
+/// Bevy system that ultimately renders the gizmos.
+///
+/// This system is made public in case you want to set other
+/// systems to run before or after it.
+/// There should be no need to add this system manually.
+#[allow(private_interfaces)]
+pub fn render_gizmo_log_events(receiver: NonSend<GizmoLogEventReceiver>, mut gizmos: Gizmos) {
     for gizmo_command in receiver.0.try_iter() {
         gizmo_command.draw(&mut gizmos);
     }

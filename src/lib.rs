@@ -49,6 +49,15 @@
 //! debug!(gizmo = arrow(Vec3::ZERO, Vec3::ONE, RED));
 //! debug!(gizmo = axes(Transform::default(), 1.0));
 //! ```
+//!
+//! # Feature flags
+//!
+//! **bevy:** Enabled by default. The bevy feature enables reading
+//! gizmo logs in bevy and rendering them. You can disable this feature if
+//! your crate needs to generate gizmo logs but doesn't need to consume them.
+//!
+//! **convert-nalgebra033:** Adds a module `gizmo_na` which lets you
+//! create gizmos using nalgebra types instead of bevy's default glam types.
 
 pub mod gizmo;
 
@@ -60,6 +69,8 @@ mod log_layer;
 #[cfg(feature = "bevy")]
 mod log_plugin;
 
+#[cfg(feature = "bevy")]
+pub use log_layer::render_gizmo_log_events;
 #[cfg(feature = "bevy")]
 pub use log_layer::GizmoLayer;
 #[cfg(feature = "bevy")]
