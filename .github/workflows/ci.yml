@@ -11,20 +11,22 @@ env:
 
 jobs:
   build:
-    strategy:
-      matrix:
-        features: ["--no-default-features", "--all-features"]
-
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
       - uses: actions-rust-lang/setup-rust-toolchain@v1
         with:
-          components: rustfmt
-      - name: Build
-        run: cargo build --verbose ${{ matrix.features }}
+          components: rustfmt, cargo-readme
+      - name: Check without features
+        run: cargo check --verbose --no-default-features
+      - name: Build with features
+        run: cargo build --verbose --all-features
       - name: Run tests
-        run: cargo test --verbose ${{ matrix.features }}
+        run: cargo test --verbose --all-features
       - name: Rustfmt Check
         uses: actions-rust-lang/rustfmt@v1
+      - name: Generate readme
+        run: cargo readme > README2.md
+      - name: Check readme is up to date
+        run: diff README.md README2.md
