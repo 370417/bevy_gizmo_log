@@ -63,14 +63,13 @@ fn extract_gizmo_command(event: &Event<'_>) -> Option<GizmoCommand> {
 }
 
 /// Bevy non-send resource that receives gizmo log events.
-struct GizmoLogEventReceiver(pub mpsc::Receiver<GizmoCommand>);
+pub struct GizmoLogEventReceiver(mpsc::Receiver<GizmoCommand>);
 
 /// Bevy system that ultimately renders the gizmos.
 ///
 /// This system is made public in case you want to set other
 /// systems to run before or after it.
 /// There should be no need to add this system manually.
-#[allow(private_interfaces)]
 pub fn render_gizmo_log_events(receiver: NonSend<GizmoLogEventReceiver>, mut gizmos: Gizmos) {
     for gizmo_command in receiver.0.try_iter() {
         gizmo_command.draw(&mut gizmos);
