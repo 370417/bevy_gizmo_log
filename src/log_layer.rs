@@ -11,15 +11,17 @@ use tracing_subscriber::{layer::Context, Layer};
 
 use crate::gizmo::GizmoCommand;
 
-/// A `tracing_subscriber::Layer` that handles gizmo logs.
+/// A [`tracing_subscriber::Layer`] that handles gizmo logs.
 ///
-/// For use when you don't want to use `GizmoLogPlugin`.
+/// For use when you don't want to use [`GizmoLogPlugin`].
+///
+/// [`GizmoLogPlugin`]: crate::GizmoLogPlugin
 pub struct GizmoLayer {
     sender: mpsc::Sender<GizmoCommand>,
 }
 
 impl GizmoLayer {
-    /// Create a new `GizmoLayer` and setup `app` to render gizmos from logs.
+    /// Create a new [`GizmoLayer`] and setup `app` to render gizmos from logs.
     pub fn new(app: &mut App) -> Self {
         let (sender, receiver) = std::sync::mpsc::channel();
         app.insert_non_send_resource(GizmoLogEventReceiver(receiver));

@@ -5,7 +5,7 @@ use bevy_color::Color;
 use bevy_gizmos::gizmos::Gizmos;
 use bevy_math::{Dir3, Mat4, Quat, UVec2, UVec3, Vec2, Vec3};
 
-use crate::transform::IntoMat4;
+pub use crate::transform::IntoMat4;
 
 #[derive(serde::Serialize, serde::Deserialize)]
 pub(crate) enum GizmoCommand {

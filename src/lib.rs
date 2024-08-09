@@ -22,9 +22,9 @@
 //!
 //! # Getting started
 //!
-//! Add `GizmoLogPlugin` to your bevy app. If you use
-//! `DefaultPlugins`, you'll also need to disable bevy's default
-//! `LogPlugin`.
+//! Add [`GizmoLogPlugin`] to your bevy app. If you use
+//! [`DefaultPlugins`], you'll also need to disable bevy's default
+//! [`LogPlugin`].
 //!
 //! ```
 //! # use bevy_app::{App, PluginGroup};
@@ -36,7 +36,7 @@
 //!     .add_plugins(GizmoLogPlugin::default());
 //! ```
 //!
-//! To log a gizmo, choose a function from the `bevy_gizmo_log::gizmo`
+//! To log a gizmo, choose a function from the [`gizmo`]
 //! module and log it in a gizmo field:
 //!
 //! ```
@@ -58,6 +58,9 @@
 //!
 //! **convert-nalgebra033:** Adds a module `gizmo_na` which lets you
 //! create gizmos using nalgebra types instead of bevy's default glam types.
+//!
+//! [`DefaultPlugins`]: bevy::DefaultPlugins
+//! [`LogPlugin`]: bevy::log::LogPlugin
 
 pub mod gizmo;
 

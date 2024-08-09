@@ -6,10 +6,10 @@ use tracing_subscriber::{filter::FilterFn, fmt, layer::SubscriberExt, EnvFilter,
 
 use crate::log_layer::GizmoLayer;
 
-/// Replacement for bevy's `LogPlugin` that handles gizmo logs.
+/// Replacement for bevy's [`LogPlugin`] that handles gizmo logs.
 ///
-/// If you use `DefaultPlugins`, make sure to disable `LogPlugin`.
-/// `LogPlugin` and `GizmoLogPlugin` both create tracing subscribers.
+/// If you use [`DefaultPlugins`], make sure to disable [`LogPlugin`].
+/// [`LogPlugin`] and [`GizmoLogPlugin`] both create tracing subscribers.
 /// Only one tracing subscriber can be used at a time.
 ///
 /// ```
@@ -22,12 +22,15 @@ use crate::log_layer::GizmoLayer;
 ///     .add_plugins(GizmoLogPlugin::default());
 /// ```
 ///
-/// `GizmoLogPlugin` acts a drop-in replacement for `LogPlugin` for simple usecases.
+/// [`GizmoLogPlugin`] acts a drop-in replacement for [`LogPlugin`] for simple usecases.
 /// It currently does not support certain bevy features (trace, tracing-chrome,
 /// and tracing-tracy) or alternate targets (wasm32 and android).
 ///
-/// If you don't want to use the entire `GizmoLogPlugin`, you can use `GizmoLayer`
+/// If you don't want to use the entire [`GizmoLogPlugin`], you can use [`GizmoLayer`]
 /// with your own tracing subscriber to handle gizmo logs.
+///
+/// [`LogPlugin`]: bevy::log::LogPlugin
+/// [`DefaultPlugins`]: bevy::DefaultPlugins
 pub struct GizmoLogPlugin {
     // We cannot use bevy's LogPlugin and it's custom_layer field
     // because bevy's LogPlugin can only filter globally. We want
