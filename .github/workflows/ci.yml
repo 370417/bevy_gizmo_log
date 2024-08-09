@@ -26,9 +26,7 @@ jobs:
         run: cargo test --verbose --all-features
       - name: Rustfmt Check
         uses: actions-rust-lang/rustfmt@v1
-      - name: Generate readme
-        run: |
-          cargo install cargo-readme
-          cargo readme > README2.md
       - name: Check readme is up to date
-        run: diff README.md README2.md
+        run: |
+          cargo install cargo-rdme
+          cargo rdme --check
