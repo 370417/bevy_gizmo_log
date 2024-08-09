@@ -18,7 +18,7 @@
 //! # Motivation
 //!
 //! 1. Make adding gizmos as quick and easy as possible.
-//! 2. Add gizmos anywhere, even in code not managed by bevy.
+//! 2. Add gizmos from anywhere, even from code not managed by bevy.
 //!
 //! # Getting started
 //!
