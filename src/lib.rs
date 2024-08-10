@@ -27,8 +27,8 @@
 //! [`LogPlugin`].
 //!
 //! ```
+//! # use bevy::DefaultPlugins;
 //! # use bevy_app::{App, PluginGroup};
-//! # use bevy_internal::DefaultPlugins;
 //! # use bevy_gizmo_log::GizmoLogPlugin;
 //! # use bevy_log::LogPlugin;
 //! App::new()

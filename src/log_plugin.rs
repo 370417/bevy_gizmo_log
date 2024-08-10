@@ -13,8 +13,8 @@ use crate::log_layer::GizmoLayer;
 /// Only one tracing subscriber can be used at a time.
 ///
 /// ```
+/// # use bevy::DefaultPlugins;
 /// # use bevy_app::{App, PluginGroup};
-/// # use bevy_internal::DefaultPlugins;
 /// # use bevy_gizmo_log::GizmoLogPlugin;
 /// # use bevy_log::LogPlugin;
 /// App::new()
