@@ -1,7 +1,7 @@
 use std::sync::mpsc;
 
-use bevy_app::{App, Update};
-use bevy_ecs::system::NonSend;
+use bevy_app::App;
+use bevy_ecs::{schedule::ScheduleLabel, system::NonSend};
 use bevy_gizmos::gizmos::Gizmos;
 use tracing::{
     field::{Field, Visit},
@@ -22,10 +22,10 @@ pub struct GizmoLayer {
 
 impl GizmoLayer {
     /// Create a new [`GizmoLayer`] and setup `app` to render gizmos from logs.
-    pub fn new(app: &mut App) -> Self {
+    pub fn new(app: &mut App, schedule: impl ScheduleLabel) -> Self {
         let (sender, receiver) = std::sync::mpsc::channel();
         app.insert_non_send_resource(GizmoLogEventReceiver(receiver));
-        app.add_systems(Update, render_gizmo_log_events);
+        app.add_systems(schedule, render_gizmo_log_events);
         GizmoLayer { sender }
     }
 }

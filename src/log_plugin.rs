@@ -1,4 +1,4 @@
-use bevy_app::{App, Plugin};
+use bevy_app::{App, Plugin, PostUpdate};
 use bevy_log::{BoxedLayer, Level};
 use tracing::{self, Subscriber};
 use tracing_log::LogTracer;
@@ -66,7 +66,7 @@ impl Plugin for GizmoLogPlugin {
 
         let subscriber = subscriber
             .with((self.custom_layer)(app))
-            .with(GizmoLayer::new(app))
+            .with(GizmoLayer::new(app, PostUpdate))
             .with(self.global_filter_layer())
             .with(to_stderr_layer);
 
