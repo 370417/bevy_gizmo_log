@@ -19,6 +19,13 @@ bevy = [
 ]
 convert-nalgebra033 = ["dep:nalgebra"]
 
+# docs.rs-specific configuration
+[package.metadata.docs.rs]
+# document all features
+all-features = true
+# defines the configuration attribute `docsrs`
+rustdoc-args = ["--cfg", "docsrs"]
+
 [dependencies]
 bevy_color = { version = "0.14.1", features = ["serialize"]}
 bevy_math = { version = "0.14.1", features = ["serialize"] }

@@ -9,7 +9,7 @@ use bevy_transform::components::{GlobalTransform, Transform};
 /// [`IntoMat4`] is a trait that helps convert these possibilities
 /// into [`Mat4`] so that they can be serialized and logged.
 ///
-/// [`impl TransformPoint`]: bevy::prelude::TransformPoint
+/// [`impl TransformPoint`]: bevy_transform::TransformPoint
 pub trait IntoMat4 {
     fn into_mat4(self) -> Mat4;
 }
@@ -27,6 +27,7 @@ impl IntoMat4 for Affine3A {
 }
 
 #[cfg(feature = "bevy")]
+#[cfg_attr(docsrs, doc(cfg(feature = "bevy")))]
 impl IntoMat4 for GlobalTransform {
     fn into_mat4(self) -> Mat4 {
         self.compute_matrix()
@@ -34,6 +35,7 @@ impl IntoMat4 for GlobalTransform {
 }
 
 #[cfg(feature = "bevy")]
+#[cfg_attr(docsrs, doc(cfg(feature = "bevy")))]
 impl IntoMat4 for Transform {
     fn into_mat4(self) -> Mat4 {
         self.compute_matrix()

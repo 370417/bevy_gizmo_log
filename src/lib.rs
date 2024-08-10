@@ -23,7 +23,7 @@
 //! # Getting started
 //!
 //! Add [`GizmoLogPlugin`] to your bevy app. If you use
-//! [`DefaultPlugins`], you'll also need to disable bevy's default
+//! `DefaultPlugins`, you'll also need to disable bevy's default
 //! [`LogPlugin`].
 //!
 //! ```
@@ -59,24 +59,33 @@
 //! **convert-nalgebra033:** Adds a module `gizmo_na` which lets you
 //! create gizmos using nalgebra types instead of bevy's default glam types.
 //!
-//! [`DefaultPlugins`]: bevy_internal::DefaultPlugins
 //! [`LogPlugin`]: bevy_log::LogPlugin
+
+// only enables the `doc_cfg` feature when
+// the `docsrs` configuration attribute is defined
+#![cfg_attr(docsrs, feature(doc_cfg))]
 
 pub mod gizmo;
 
 #[cfg(feature = "convert-nalgebra033")]
+#[cfg_attr(docsrs, doc(cfg(feature = "convert-nalgebra033")))]
 pub mod gizmo_na;
 
 #[cfg(feature = "bevy")]
+#[cfg_attr(docsrs, doc(cfg(feature = "bevy")))]
 mod log_layer;
 #[cfg(feature = "bevy")]
+#[cfg_attr(docsrs, doc(cfg(feature = "bevy")))]
 mod log_plugin;
 
 #[cfg(feature = "bevy")]
+#[cfg_attr(docsrs, doc(cfg(feature = "bevy")))]
 pub use log_layer::render_gizmo_log_events;
 #[cfg(feature = "bevy")]
+#[cfg_attr(docsrs, doc(cfg(feature = "bevy")))]
 pub use log_layer::GizmoLayer;
 #[cfg(feature = "bevy")]
+#[cfg_attr(docsrs, doc(cfg(feature = "bevy")))]
 pub use log_plugin::GizmoLogPlugin;
 
 mod transform;

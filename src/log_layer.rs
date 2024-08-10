@@ -15,6 +15,7 @@ use crate::gizmo::GizmoCommand;
 ///
 /// For use when you don't want to use [`GizmoLogPlugin`].
 ///
+/// [`tracing_subscriber::Layer`]: tracing_subscriber::Layer
 /// [`GizmoLogPlugin`]: crate::GizmoLogPlugin
 pub struct GizmoLayer {
     sender: mpsc::Sender<GizmoCommand>,
