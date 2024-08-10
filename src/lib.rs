@@ -26,7 +26,7 @@
 //! `DefaultPlugins`, you'll also need to disable bevy's default
 //! [`LogPlugin`].
 //!
-//! ```
+//! ```no_run
 //! # use bevy::DefaultPlugins;
 //! # use bevy_app::{App, PluginGroup};
 //! # use bevy_gizmo_log::GizmoLogPlugin;
