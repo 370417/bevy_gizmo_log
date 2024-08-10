@@ -22,6 +22,10 @@ jobs:
         run: cargo check --verbose --no-default-features
       - name: Build with features
         run: cargo build --verbose --all-features
+        # bevy is only a dev-dependency, which is why we do this after cargo build.
+        # the bevy_* crates we use for cargo build do not require these dependencies.
+      - name: Install dependencies needed by bevy
+        run: sudo apt-get update; sudo apt-get install --no-install-recommends libasound2-dev libudev-dev
       - name: Run tests
         run: cargo test --verbose --all-features
       - name: Clippy
