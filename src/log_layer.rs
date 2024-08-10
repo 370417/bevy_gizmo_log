@@ -22,6 +22,8 @@ pub struct GizmoLayer {
 
 impl GizmoLayer {
     /// Create a new [`GizmoLayer`] and setup `app` to render gizmos from logs.
+    ///
+    /// `schedule` is the schedule used by [`render_gizmo_log_events`] to render gizmos.
     pub fn new(app: &mut App, schedule: impl ScheduleLabel) -> Self {
         let (sender, receiver) = std::sync::mpsc::channel();
         app.insert_non_send_resource(GizmoLogEventReceiver(receiver));
@@ -70,6 +72,10 @@ pub struct GizmoLogEventReceiver(mpsc::Receiver<GizmoCommand>);
 /// This system is made public in case you want to set other
 /// systems to run before or after it.
 /// There should be no need to add this system manually.
+///
+/// By default, runs in [`PostUpdate`].
+///
+/// [`PostUpdate`]: bevy_app::PostUpdate
 pub fn render_gizmo_log_events(receiver: NonSend<GizmoLogEventReceiver>, mut gizmos: Gizmos) {
     for gizmo_command in receiver.0.try_iter() {
         gizmo_command.draw(&mut gizmos);

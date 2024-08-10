@@ -59,8 +59,8 @@
 //! **convert-nalgebra033:** Adds a module `gizmo_na` which lets you
 //! create gizmos using nalgebra types instead of bevy's default glam types.
 //!
-//! [`DefaultPlugins`]: bevy::DefaultPlugins
-//! [`LogPlugin`]: bevy::log::LogPlugin
+//! [`DefaultPlugins`]: bevy_internal::DefaultPlugins
+//! [`LogPlugin`]: bevy_log::LogPlugin
 
 pub mod gizmo;
 

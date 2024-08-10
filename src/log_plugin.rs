@@ -29,8 +29,8 @@ use crate::log_layer::GizmoLayer;
 /// If you don't want to use the entire [`GizmoLogPlugin`], you can use [`GizmoLayer`]
 /// with your own tracing subscriber to handle gizmo logs.
 ///
-/// [`LogPlugin`]: bevy::log::LogPlugin
-/// [`DefaultPlugins`]: bevy::DefaultPlugins
+/// [`LogPlugin`]: bevy_log::LogPlugin
+/// [`DefaultPlugins`]: bevy_internal::DefaultPlugins
 pub struct GizmoLogPlugin {
     // We cannot use bevy's LogPlugin and it's custom_layer field
     // because bevy's LogPlugin can only filter globally. We want
