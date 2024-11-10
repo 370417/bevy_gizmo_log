@@ -285,3 +285,120 @@ fn convert_3d(isometry: Isometry3<f32>) -> Isometry3d {
     let (translation, rotation): (Vec3, Quat) = isometry.into();
     Isometry3d::new(translation, rotation)
 }
+
+#[cfg(test)]
+mod tests {
+    use core::f32;
+
+    use approx::assert_relative_eq;
+    use bevy_math::Rot2;
+    use gizmo::GizmoCommand;
+    use rand::{Rng, SeedableRng};
+    use rand_chacha::ChaCha8Rng;
+
+    use super::*;
+
+    #[test]
+    fn test_convert_2d() {
+        let mut rng = ChaCha8Rng::seed_from_u64(0);
+        for _ in 0..1000 {
+            let color = Color::srgb(1., 1., 1.);
+            let (na_isometry, glam_isometry) = rand_isometry_2d(&mut rng);
+
+            let na_str = ellipse_2d(na_isometry, Vector2::new(1., 2.), color);
+            let glam_str = crate::gizmo::ellipse_2d(glam_isometry, Vec2::new(1., 2.), color);
+
+            let na_command: GizmoCommand = ron::de::from_str(&na_str).unwrap();
+            let glam_command: GizmoCommand = ron::de::from_str(&glam_str).unwrap();
+
+            match (na_command, glam_command) {
+                (
+                    GizmoCommand::Ellipse2d {
+                        isometry: isometry1,
+                        half_size: _,
+                        color: _,
+                    },
+                    GizmoCommand::Ellipse2d {
+                        isometry: isometry2,
+                        half_size: _,
+                        color: _,
+                    },
+                ) => {
+                    assert_relative_eq!(isometry1.rotation.cos, isometry2.rotation.cos);
+                    assert_relative_eq!(isometry1.rotation.sin, isometry2.rotation.sin);
+                    assert_relative_eq!(isometry1.translation.x, isometry2.translation.x);
+                    assert_relative_eq!(isometry1.translation.y, isometry2.translation.y);
+                }
+                _ => panic!("command should be ellipse2d"),
+            }
+        }
+    }
+
+    #[test]
+    fn test_convert_3d() {
+        let mut rng = ChaCha8Rng::seed_from_u64(0);
+        for _ in 0..1000 {
+            let color = Color::srgb(1., 1., 1.);
+            let (na_isometry, glam_isometry) = rand_isometry_3d(&mut rng);
+
+            let na_str = ellipse(na_isometry, Vector2::new(1., 2.), color);
+            let glam_str = crate::gizmo::ellipse(glam_isometry, Vec2::new(1., 2.), color);
+
+            let na_command: GizmoCommand = ron::de::from_str(&na_str).unwrap();
+            let glam_command: GizmoCommand = ron::de::from_str(&glam_str).unwrap();
+
+            match (na_command, glam_command) {
+                (
+                    GizmoCommand::Ellipse {
+                        isometry: isometry1,
+                        half_size: _,
+                        color: _,
+                    },
+                    GizmoCommand::Ellipse {
+                        isometry: isometry2,
+                        half_size: _,
+                        color: _,
+                    },
+                ) => {
+                    assert_relative_eq!(isometry1.rotation.x, isometry2.rotation.x);
+                    assert_relative_eq!(isometry1.rotation.y, isometry2.rotation.y);
+                    assert_relative_eq!(isometry1.rotation.z, isometry2.rotation.z);
+                    assert_relative_eq!(isometry1.rotation.w, isometry2.rotation.w);
+                    assert_relative_eq!(isometry1.translation.x, isometry2.translation.x);
+                    assert_relative_eq!(isometry1.translation.y, isometry2.translation.y);
+                    assert_relative_eq!(isometry1.translation.z, isometry2.translation.z);
+                }
+                _ => panic!("command should be ellipse"),
+            }
+        }
+    }
+
+    fn rand_isometry_2d(rng: &mut impl Rng) -> (Isometry2<f32>, Isometry2d) {
+        let x = rng.gen();
+        let y = rng.gen();
+        let angle = f32::consts::TAU * rng.gen::<f32>();
+
+        let na = Isometry2::new(Vector2::new(x, y), angle);
+        let glam = Isometry2d::new(Vec2::new(x, y), Rot2::radians(angle));
+
+        (na, glam)
+    }
+
+    fn rand_isometry_3d(rng: &mut impl Rng) -> (Isometry3<f32>, Isometry3d) {
+        let x = rng.gen();
+        let y = rng.gen();
+        let z = rng.gen();
+
+        let axis_angle_x = rng.gen();
+        let axis_angle_y = rng.gen();
+        let axis_angle_z = rng.gen();
+
+        let axis_angle = Vector3::new(axis_angle_x, axis_angle_y, axis_angle_z);
+        let scaled_axis = Vec3::new(axis_angle_x, axis_angle_y, axis_angle_z);
+
+        let na = Isometry3::new(Vector3::new(x, y, z), axis_angle);
+        let glam = Isometry3d::new(Vec3::new(x, y, z), Quat::from_scaled_axis(scaled_axis));
+
+        (na, glam)
+    }
+}
