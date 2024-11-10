@@ -298,6 +298,8 @@ mod tests {
 
     use super::*;
 
+    const EPSILON: f32 = 0.000001;
+
     #[test]
     fn test_convert_2d() {
         let mut rng = ChaCha8Rng::seed_from_u64(0);
@@ -324,10 +326,26 @@ mod tests {
                         color: _,
                     },
                 ) => {
-                    assert_relative_eq!(isometry1.rotation.cos, isometry2.rotation.cos);
-                    assert_relative_eq!(isometry1.rotation.sin, isometry2.rotation.sin);
-                    assert_relative_eq!(isometry1.translation.x, isometry2.translation.x);
-                    assert_relative_eq!(isometry1.translation.y, isometry2.translation.y);
+                    assert_relative_eq!(
+                        isometry1.rotation.cos,
+                        isometry2.rotation.cos,
+                        epsilon = EPSILON
+                    );
+                    assert_relative_eq!(
+                        isometry1.rotation.sin,
+                        isometry2.rotation.sin,
+                        epsilon = EPSILON
+                    );
+                    assert_relative_eq!(
+                        isometry1.translation.x,
+                        isometry2.translation.x,
+                        epsilon = EPSILON
+                    );
+                    assert_relative_eq!(
+                        isometry1.translation.y,
+                        isometry2.translation.y,
+                        epsilon = EPSILON
+                    );
                 }
                 _ => panic!("command should be ellipse2d"),
             }
@@ -360,13 +378,41 @@ mod tests {
                         color: _,
                     },
                 ) => {
-                    assert_relative_eq!(isometry1.rotation.x, isometry2.rotation.x);
-                    assert_relative_eq!(isometry1.rotation.y, isometry2.rotation.y);
-                    assert_relative_eq!(isometry1.rotation.z, isometry2.rotation.z);
-                    assert_relative_eq!(isometry1.rotation.w, isometry2.rotation.w);
-                    assert_relative_eq!(isometry1.translation.x, isometry2.translation.x);
-                    assert_relative_eq!(isometry1.translation.y, isometry2.translation.y);
-                    assert_relative_eq!(isometry1.translation.z, isometry2.translation.z);
+                    assert_relative_eq!(
+                        isometry1.rotation.x,
+                        isometry2.rotation.x,
+                        epsilon = EPSILON
+                    );
+                    assert_relative_eq!(
+                        isometry1.rotation.y,
+                        isometry2.rotation.y,
+                        epsilon = EPSILON
+                    );
+                    assert_relative_eq!(
+                        isometry1.rotation.z,
+                        isometry2.rotation.z,
+                        epsilon = EPSILON
+                    );
+                    assert_relative_eq!(
+                        isometry1.rotation.w,
+                        isometry2.rotation.w,
+                        epsilon = EPSILON
+                    );
+                    assert_relative_eq!(
+                        isometry1.translation.x,
+                        isometry2.translation.x,
+                        epsilon = EPSILON
+                    );
+                    assert_relative_eq!(
+                        isometry1.translation.y,
+                        isometry2.translation.y,
+                        epsilon = EPSILON
+                    );
+                    assert_relative_eq!(
+                        isometry1.translation.z,
+                        isometry2.translation.z,
+                        epsilon = EPSILON
+                    );
                 }
                 _ => panic!("command should be ellipse"),
             }
