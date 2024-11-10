@@ -3,7 +3,7 @@
 use bevy_color::Color;
 #[cfg(feature = "bevy")]
 use bevy_gizmos::gizmos::Gizmos;
-use bevy_math::{Dir3, Isometry2d, Isometry3d, Mat4, Quat, UVec2, UVec3, Vec2, Vec3};
+use bevy_math::{Isometry2d, Isometry3d, Mat4, UVec2, UVec3, Vec2, Vec3};
 
 pub use crate::transform::IntoMat4;
 

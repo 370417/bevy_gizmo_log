@@ -44,4 +44,7 @@ bevy_transform = { version = "0.15.0-rc.3", optional = true }
 nalgebra = { version = "0.33.2", features = ["convert-glam029"], optional = true }
 
 [dev-dependencies]
+approx = "0.5.1"
 bevy = "0.15.0-rc.3"
+rand = "0.8.5"
+rand_chacha = "0.3.1"
