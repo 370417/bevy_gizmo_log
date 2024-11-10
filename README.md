@@ -15,6 +15,7 @@ debug!(gizmo = arrow(Vec3::ZERO, Vec3::ONE, RED));
 
 | bevy | bevy_gizmo_log |
 | ---- | -------------- |
+| 0.15 | 0.3.0          |
 | 0.14 | 0.1.0 – 0.2.0  |
 
 ## Motivation
