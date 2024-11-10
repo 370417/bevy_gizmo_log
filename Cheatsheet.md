@@ -3,6 +3,7 @@
 - [ ] Update version number in Cargo.toml.
 - [ ] Update compatible versions table in lib.rs doc comment.
 - [ ] Update compatible versions table in README.md.
+- [ ] Update version numbers in links to bevy docs in gizmo.rs and gizmo_na.rs.
 - [ ] Update Changelog.md.
 - [ ] Make sure Github actions build is passing.
 - [ ] Make sure the basic example looks good.
