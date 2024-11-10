@@ -308,7 +308,7 @@ mod tests {
             let (na_isometry, glam_isometry) = rand_isometry_2d(&mut rng);
 
             let na_str = ellipse_2d(na_isometry, Vector2::new(1., 2.), color);
-            let glam_str = crate::gizmo::ellipse_2d(glam_isometry, Vec2::new(1., 2.), color);
+            let glam_str = gizmo::ellipse_2d(glam_isometry, Vec2::new(1., 2.), color);
 
             let na_command: GizmoCommand = ron::de::from_str(&na_str).unwrap();
             let glam_command: GizmoCommand = ron::de::from_str(&glam_str).unwrap();
@@ -360,7 +360,7 @@ mod tests {
             let (na_isometry, glam_isometry) = rand_isometry_3d(&mut rng);
 
             let na_str = ellipse(na_isometry, Vector2::new(1., 2.), color);
-            let glam_str = crate::gizmo::ellipse(glam_isometry, Vec2::new(1., 2.), color);
+            let glam_str = gizmo::ellipse(glam_isometry, Vec2::new(1., 2.), color);
 
             let na_command: GizmoCommand = ron::de::from_str(&na_str).unwrap();
             let glam_command: GizmoCommand = ron::de::from_str(&glam_str).unwrap();
