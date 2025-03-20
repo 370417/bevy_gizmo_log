@@ -1,3 +1,7 @@
+# v0.4.0
+
+- Updated bevy to v0.16
+
 # v0.3.0
 
 - Updated bevy to v0.15
